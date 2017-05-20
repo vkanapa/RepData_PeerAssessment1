@@ -17,17 +17,22 @@ activity$date <- as.Date(activity$date)
 totalActivity <- activity[, list(total= sum(steps, na.rm = T)), by=date]
 hist(totalActivity$total, col = "magenta", main= "Total Number of steps in a day", xlab="Total Steps")
 
-#Calculating and plotting the Mean number of steps in a day
-MeanActivity <- activity[, list(Mean= mean(steps, na.rm = T)), by=date]
-hist(MeanActivity$Mean, main= "Average number of Steps in a day", col="green", xlab="Mean Steps")
 
-#Calculating and plotting the Median of the total steps in a day
-MedianActivity <- activity[, list(Median= median(steps, na.rm = T)), by=date]
-hist(MedianActivity$Median, main= "Median of number of Steps in a day", col="blue", xlab="Median")
+MeanActivity <- activity[, list(Mean= mean(steps, na.rm = T)), by=date]
+
+#Calculating the Mean number of steps in a day
+Mean <- mean(totalActivity$total, na.rm = T)
+
+#Calculating the Median of the total steps in a day
+
+Median <- median(totalActivity$total, na.rm = T)
 
 
 ```
 
+
+1. Mean is `r I(Mean)`
+2. Median is  `r I(Median)`
 
 Average daily activity pattern(TimeSeries Analysis)
 
@@ -72,14 +77,13 @@ totalAc <- ac[, list(total= sum(steps, na.rm = T)), by=date]
 
 hist(totalAc$total, col=  "magenta", main= "Total Number of Steps  after imputing the data", xlab = "Total Steps")
 
-
-#Calculating and plotting the Mean number of steps in a day
 MeanAc <- ac[, list(Mean= mean(steps, na.rm = T)), by=date]
-hist(MeanAc$Mean, main= "Average number of Steps in a day", col="green", xlab="Mean Steps")
 
-#Calculating and plotting the Median of the total steps in a day
-MedianAc <- ac[, list(Median= median(steps, na.rm = T)), by=date]
-hist(MedianAc$Median, main= "Median of number of Steps in a day", col="blue", xlab="Median")
+#Calculating the Mean number of steps in a day
+mean(totalAc$total)
+
+#Calculating the Median of the total steps in a day
+median(totalAc$total)
 
 ```
 

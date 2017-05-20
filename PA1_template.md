@@ -7,7 +7,25 @@ Mean Steps taken in a day
 ```r
 #Load the data table package
 library(data.table)
+```
 
+```
+## data.table 1.10.4
+```
+
+```
+##   The fastest way to learn (by data.table authors): https://www.datacamp.com/courses/data-analysis-the-data-table-way
+```
+
+```
+##   Documentation: ?data.table, example(data.table) and browseVignettes("data.table")
+```
+
+```
+##   Release notes, videos and slides: http://r-datatable.com
+```
+
+```r
 activity <- read.csv("activity.csv")
 #Converting the data frame into a datatable
 activity <- data.table(activity)
@@ -21,21 +39,19 @@ hist(totalActivity$total, col = "magenta", main= "Total Number of steps in a day
 ![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-1.png)
 
 ```r
-#Calculating and plotting the Mean number of steps in a day
 MeanActivity <- activity[, list(Mean= mean(steps, na.rm = T)), by=date]
-hist(MeanActivity$Mean, main= "Average number of Steps in a day", col="green", xlab="Mean Steps")
+
+#Calculating the Mean number of steps in a day
+Mean <- mean(totalActivity$total, na.rm = T)
+
+#Calculating the Median of the total steps in a day
+
+Median <- median(totalActivity$total, na.rm = T)
 ```
 
-![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-2.png)
 
-```r
-#Calculating and plotting the Median of the total steps in a day
-MedianActivity <- activity[, list(Median= median(steps, na.rm = T)), by=date]
-hist(MedianActivity$Median, main= "Median of number of Steps in a day", col="blue", xlab="Median")
-```
-
-![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-3.png)
-
+1. Mean is 9354.2295082
+2. Median is  10395
 
 Average daily activity pattern(TimeSeries Analysis)
 
@@ -88,20 +104,24 @@ hist(totalAc$total, col=  "magenta", main= "Total Number of Steps  after imputin
 ![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png)
 
 ```r
-#Calculating and plotting the Mean number of steps in a day
 MeanAc <- ac[, list(Mean= mean(steps, na.rm = T)), by=date]
-hist(MeanAc$Mean, main= "Average number of Steps in a day", col="green", xlab="Mean Steps")
+
+#Calculating the Mean number of steps in a day
+mean(totalAc$total)
 ```
 
-![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-2.png)
+```
+## [1] 10766.19
+```
 
 ```r
-#Calculating and plotting the Median of the total steps in a day
-MedianAc <- ac[, list(Median= median(steps, na.rm = T)), by=date]
-hist(MedianAc$Median, main= "Median of number of Steps in a day", col="blue", xlab="Median")
+#Calculating the Median of the total steps in a day
+median(totalAc$total)
 ```
 
-![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-3.png)
+```
+## [1] 10766.19
+```
 
 
 Mean of the total number steps in a day doesn't effect much but the median does
